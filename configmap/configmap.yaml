@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: mariaconfig
+data:
+  MARIADB_ROOT_PASSWORD: redhat
+  MARIADB_DATABASE: ramiz
