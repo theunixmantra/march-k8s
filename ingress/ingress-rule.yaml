@@ -1,0 +1,61 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress 
+metadata: 
+  name: skynet-ingress 
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: / 
+spec: 
+  ingressClassName: nginx 
+  rules: 
+  - host: skynet.com 
+    http: 
+      paths: 
+      - path: /
+        pathType: Prefix 
+        backend: 
+          service: 
+            name: exam-service 
+            port: 
+              number: 80
+              
+      - path: /exam
+        pathType: Prefix 
+        backend: 
+          service: 
+            name: exam-service 
+            port: 
+              number: 80 
+              
+      - path: /videos
+        pathType: Prefix 
+        backend: 
+          service: 
+            name: videos-service 
+            port: 
+              number: 80 
+
+      - path: /about
+        pathType: Prefix 
+        backend: 
+          service: 
+            name: videos-service 
+            port: 
+              number: 80 
+
+
+      - path: /yuga
+        pathType: Prefix 
+        backend: 
+          service: 
+            name: videos-service 
+            port: 
+              number: 80 
+
+
+      - path: /chandra
+        pathType: Prefix 
+        backend: 
+          service: 
+            name: exam-service 
+            port: 
+              number: 80 
