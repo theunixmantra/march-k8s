@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webpod
+  namespace: default
+  labels:
+    app: web
+spec:
+   nodeName: controlplane
+   containers:
+     - name: container1
+       image: busybox:latest
+       command: ["sh","-c","echo 'Hello from hostpatch volume' > /opt/test.txt; sleep 3600" ]
+       volumeMounts:
+         - name: hostvolume
+           mountPath: /opt
+      
+   volumes:
+     - name: hostvolume
+       hostPath:
+         path: /tmp/data
+         type: DirectoryOrCreate
